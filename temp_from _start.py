@@ -5,6 +5,21 @@ import json
 app = Flask(__name__)
 
 
+
+data2 = {
+    "event_type": "link_click",
+    "user_id": 'user_id',
+    "link_url": 'clicked_link_url'
+}
+
+
+data3 = {
+    "event_type": "button_click",
+    "user_id": 'user_id',
+    "button_name": 'clicked_button_name'
+}
+
+
 @app.route('/slack-webhook', methods=['POST'])
 def slack_webhook_receiver():
     data = request.get_json()
