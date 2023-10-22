@@ -1,7 +1,19 @@
 from flask import Flask, request, jsonify
 import requests  # Used to send the webhook
+import threading
+import time
 
 app = Flask(__name__)
+
+
+def delayed_user_interaction(callback_url, data):
+    time.sleep(1)  # Wait for a second
+    # Send a webhook in response if callback_url is provided
+    if callback_url:
+        webhook_data = data
+        webhook_data['response'] = 'i am server'
+        requests.post(callback_url, json=webhook_data)
+
 
 @app.route('/api/message', methods=['POST'])
 def handle_message():
@@ -13,11 +25,9 @@ def handle_message():
     # Process the message
     print(f"Received message: {message}")
 
-    # Send a webhook in response if callback_url is provided
-    if callback_url:
-        webhook_data = data
-        webhook_data['response'] = 'i am server'
-        requests.post(callback_url, json=webhook_data)
+    # Start a new thread to call user_interaction after a delay
+    thread = threading.Thread(target=delayed_user_interaction, args=(callback_url, data))
+    thread.start()
 
     return jsonify({"status": "success"})
 
