@@ -5,6 +5,7 @@ class User:
         self.user_id = user_id
         self.age = age
 
+
 class UserDatabase:
     def __init__(self):
         self.users = {}
@@ -20,39 +21,18 @@ class UserDatabase:
     def get_user(self, user_id):
         return self.users.get(user_id)
 
+    def get_all_users(self
+                      ):
+        return [user for user in self.users.values()]
+
     def list_users(self):
         for user_id, user in self.users.items():
-            print(f"ID: {user_id}, Name: {user.name}, Surname: {user.surname}, Age: {user.age}")
+            print(
+                f"ID: {user_id}, Name: {user.name}, Surname: {user.surname}, Age: {user.age}")
+
 
 if __name__ == "__main__":
     db = UserDatabase()
-
-    while True:
-        print("\nUser Database Menu:")
-        print("1. Create User")
-        print("2. Get User")
-        print("3. List Users")
-        print("4. Quit")
-
-        choice = input("Enter your choice: ")
-
-        if choice == '1':
-            name = input("Enter name: ")
-            surname = input("Enter surname: ")
-            user_id = input("Enter ID: ")
-            age = input("Enter age: ")
-            db.create_user(name, surname, user_id, age)
-        elif choice == '2':
-            user_id = input("Enter user ID to get: ")
-            user = db.get_user(user_id)
-            if user:
-                print(f"User found - Name: {user.name}, Surname: {user.surname}, Age: {user.age}")
-            else:
-                print(f"User with ID {user_id} not found.")
-        elif choice == '3':
-            db.list_users()
-        elif choice == '4':
-            print("Exiting the program.")
-            break
-        else:
-            print("Invalid choice. Please try again.")
+    db.create_user('spiros', 'diochnos', 1, '26')
+    db.create_user('vaso', 'kollia', 2, '27')
+    db.create_user('angelos', 'todri', 3, '28')
