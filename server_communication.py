@@ -17,7 +17,7 @@ def handle_webhook():
     return jsonify({"status": "success"})
 
 
-def send_message_to_server(data):
+def send_message_to_mock_server(data):
     # The URL of the server endpoint
     server_url = "http://localhost:5000/api/message"
 

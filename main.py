@@ -2,12 +2,13 @@ from user_database import UserDatabase, User
 import threading
 from time import sleep
 from parameters import welcome_attachment
-from server_communication import run_client_server, send_message_to_server
+from server_communication import run_client_server, send_message_to_mock_server
 
 
 def test_server_client():
     print('round 1')
     for user in db.get_all_users():
+        input()
         # Wait for the server to start and then send a message
         welcome_attachment = {
             "actions": [
@@ -30,11 +31,13 @@ def test_server_client():
             "attachments": welcome_attachment
         }
 
-        send_message_to_server(data)
+        send_message_to_mock_server(data)
 
     sleep(1)
     print('round 2')
     for user in db.get_all_users():
+        input()
+
         # Wait for the server to start and then send a message
         coupon_attachment = {
             "actions": [
@@ -54,11 +57,13 @@ def test_server_client():
             "attachments": coupon_attachment
         }
 
-        send_message_to_server(data)
+        send_message_to_mock_server(data)
 
     sleep(1)
     print('round 3')
     for user in db.get_all_users():
+        input()
+
         # Wait for the server to start and then send a message
         media_attachment = {
             "image_url": "https://example.com/goodbye-image.jpg"
@@ -71,7 +76,7 @@ def test_server_client():
             "attachments": media_attachment
         }
 
-        send_message_to_server(data)
+        send_message_to_mock_server(data)
 
 
 if __name__ == "__main__":
