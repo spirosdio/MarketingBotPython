@@ -45,7 +45,7 @@ def delayed_user_interaction(callback_url, data):
                     coupon_attachment_answer = {
                         "event_type": "link_click",
                         "user_id": data['user_id'],
-                        "link_url": data['attachments']['actions'][0]['url']
+                        "button_name": 'reveal_coupon',
                     }
                     requests.post(callback_url, json=coupon_attachment_answer)
         except:
