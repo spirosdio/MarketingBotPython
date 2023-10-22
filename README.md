@@ -1,8 +1,3 @@
-# MarketingBotPython
-Creating a README file for your project is a great way to document its purpose, functionality, and how to set it up. Here's a sample README file based on the requirements and details you provided:
-
----
-
 # SMB Promotional Chatbot
 
 ## Introduction
@@ -15,7 +10,7 @@ This project is a simple chatbot and tooling for small and medium-sized business
 - **Testing Philosophy**: Testable code with an emphasis on coding decisions.
 - **Architecture**: Simple architecture for quick development.
 - **Error Handling**: Graceful handling of errors, including downstream dependencies and timeouts.
-- **Strengths**: Showcase your expertise, whether it's in architecture, UX, ML, or other areas.
+- **Strengths**: Aim to showcase my expertise, whether it's in architecture, UX, ML, or other areas.
 
 ## Project Flow
 
@@ -38,21 +33,13 @@ This project is a simple chatbot and tooling for small and medium-sized business
 ## Technologies and Tools
 
 - **Webhooks**: Used for communication with messaging platforms (e.g., Facebook Messenger API).
+TBD
 
 ## Deployment
 
 1. Deployable on a PaaS provider like Heroku or AWS Lambda (serverless).
 2. Can also run on a development machine for testing purposes.
-3. Use containers to create deployable images.
-
-## Pair Programming Interview
-
-- During the interview, demonstrate the basic requirements mentioned above.
-- Be prepared to discuss architecture choices made while building the bot.
-
-## Documentation
-
-- [Facebook Messenger API Documentation](https://developers.facebook.com/docs/messenger-platform) can provide inspiration for message structure and interactions.
+3. Aim to use containers to create deployable images.
 
 ## Getting Started
 
@@ -71,7 +58,3 @@ This project is licensed under the [MIT License](LICENSE).
 ## Acknowledgments
 
 Thank you for taking the time to review this project. If you have any questions or need further assistance, please don't hesitate to reach out.
-
----
-
-Feel free to customize this README to fit your project's specific details and requirements. Additionally, make sure to provide any additional instructions or setup information needed for your project.
