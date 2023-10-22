@@ -1,7 +1,7 @@
-from pprint import pprint
-
 import requests
 from flask import Flask, request, jsonify
+
+from change_this_name import handle_answer_received
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ def run_client_server():
 @app.route('/webhook/callback', methods=['POST'])
 def handle_webhook():
     data = request.json
-    pprint(data)
+    handle_answer_received(data)
     return jsonify({"status": "success"})
 
 
