@@ -17,15 +17,9 @@ def handle_webhook():
     return jsonify({"status": "success"})
 
 
-def send_message_to_server(message):
+def send_message_to_server(data):
     # The URL of the server endpoint
     server_url = "http://localhost:5000/api/message"
-
-    # The data to send in the POST request
-    data = {
-        "message": message,
-        "callback_url": "http://localhost:6000/webhook/callback"
-    }
 
     # Make the POST request
     response = requests.post(server_url, json=data)
