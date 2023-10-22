@@ -11,12 +11,14 @@ class UserDatabase:
         self.users = {}
 
     def create_user(self, name, surname, user_id, age):
+        new_user = None
         if user_id not in self.users:
             new_user = User(name, surname, user_id, age)
             self.users[user_id] = new_user
             print(f"User {name} {surname} added with ID {user_id}")
         else:
             print(f"User with ID {user_id} already exists.")
+        return new_user if new_user else None
 
     def get_user(self, user_id):
         return self.users.get(user_id)
