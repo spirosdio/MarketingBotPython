@@ -21,10 +21,9 @@ class UserDatabase:
     def get_user(self, user_id):
         return self.users.get(user_id)
 
-    def get_all_users(self
-                      ):
-        return [user for user in self.users.values()]
-
+    def get_all_users(self):
+        return list(self.users.values())
+    
     def list_users(self):
         for user_id, user in self.users.items():
             print(
