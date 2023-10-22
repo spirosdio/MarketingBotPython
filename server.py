@@ -13,14 +13,26 @@ def handle_message():
     # Process the message
     print(f"Received message: {message}")
 
+    data2={
+        "event_type": "link_click",
+        "user_id": 'user_id',
+        "link_url": 'clicked_link_url'
+    }
+    requests.post(callback_url, json=data2)
+
+    data3={
+    "event_type": "button_click",
+    "user_id": 'user_id',
+    "button_name": 'clicked_button_name'
+    }
+    requests.post(callback_url, json=data3)
+
     # Send a webhook in response if callback_url is provided
     if callback_url:
-        webhook_data = {
-            "response": f"Received your message: {message}"
-        }
+        webhook_data = data
+        webhook_data['response'] = 'i am server'
         requests.post(callback_url, json=webhook_data)
 
-    # Respond to the incoming request
     return jsonify({"status": "success"})
 
 if __name__ == '__main__':

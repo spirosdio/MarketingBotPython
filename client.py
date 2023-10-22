@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from flask import Flask, request, jsonify
 import requests
 import threading
@@ -7,7 +9,7 @@ app = Flask(__name__)
 @app.route('/webhook/callback', methods=['POST'])
 def handle_webhook():
     data = request.json
-    print(f"server said : {data.get('response')}")
+    pprint(data)
     return jsonify({"status": "success"})
 
 def run_client_server():
