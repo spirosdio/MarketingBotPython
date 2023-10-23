@@ -41,13 +41,6 @@ if __name__ == "__main__":
 
     stats['users'] = len(db.get_all_users())
 
-
-
-    #a dict that has a user as key and the root node as value
     for user in db.get_all_users():
         user_node_dict[user] = root
         send_message_to_mock_server(root.data.json(user))
-
-    # Displaying the tree
-    root.display()
-
