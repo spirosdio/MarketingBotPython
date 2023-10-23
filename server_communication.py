@@ -1,7 +1,7 @@
 import requests
 from flask import Flask, request, jsonify
 
-from parameters import user_node_dict
+from parameters import user_node_dict, stats
 from user_database import UserDatabase
 
 app = Flask(__name__)
@@ -14,16 +14,24 @@ def run_client_server():
 def handle_answer_received(userdb,  data):
     print(f"Received answer from user {userdb.name} , {data}")
     if data['event_type'] == 'message_read':
+        stats['messages_read'] += 1
         print(f"User {userdb.name} {userdb.surname} read the message at {data['interaction_timestamp']}")
         return
 
     if data['event_type'] == 'link_click':
         print(f"User {userdb.name} {userdb.surname} clicked the link!!!!!")
+        stats['coupon_reveals'] += 1
         return
 
     node = user_node_dict[userdb]
     for child in node.children:
         if child.data.button_name_of_origin == data['button_name']:
+
+            if data['button_name'] == 'no_thanks':
+                stats['negative_responses'] += 1
+            else:
+                stats['positive_responses'] += 1
+
             node = child
             send_message_to_mock_server(node.data.json(userdb))
 
@@ -48,3 +56,11 @@ def send_message_to_mock_server(data):
         print(f"Server responded with: {response.json()}")
     else:
         print(f"Failed to send message. Server responded with status code: {response.status_code}")
+
+
+
+
+@app.route('/get_stats', methods=['GET'])
+def get_stats():
+    return jsonify(stats)
+
