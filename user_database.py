@@ -7,8 +7,14 @@ class User:
 
 
 class UserDatabase:
-    def __init__(self):
-        self.users = {}
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._instance:
+            cls._instance = super(UserDatabase, cls).__new__(cls)
+            # Any other initialization goes here
+            cls._instance.users = {}
+        return cls._instance
 
     def create_user(self, name, surname, user_id, age):
         new_user = None

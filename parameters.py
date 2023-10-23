@@ -52,3 +52,4 @@ message_read_answer = {
     "user_id": 'user_id',
     "interaction_timestamp": datetime.utcnow().timestamp()
 }
+user_node_dict = {}
