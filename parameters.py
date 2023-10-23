@@ -1,5 +1,8 @@
 from datetime import datetime
 
+jpg = "https://example.com/goodbye-image.jpg"
+
+
 welcome_attachment = {
     "text": "Welcome to the demo promotional flow, John! Are you interested in our coupon promotion?",
     "actions": [
@@ -45,13 +48,13 @@ media_attachment = {
     "text": "No worries! Have a nice day!",
     "image_url": "https://example.com/goodbye-image.jpg"
 }
-
-
 message_read_answer = {
     "event_type": "message_read",
     "user_id": 'user_id',
     "interaction_timestamp": datetime.utcnow().timestamp()
 }
+
+
 user_node_dict = {}
 
 
@@ -99,7 +102,7 @@ def create_coupon_message(userdb):
 
 def create_media_message(userdb):
     media_attachment = {
-        "image_url": "https://example.com/goodbye-image.jpg"
+        "image_url": jpg
     }
     return {
         "user_id": userdb.user_id,
