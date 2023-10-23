@@ -110,3 +110,12 @@ def create_media_message(userdb):
         "text": "No worries! Have a nice day!",
         "attachments": media_attachment
     }
+
+
+stats = {
+    'users': 0,
+    'positive_responses': 0,
+    'negative_responses': 0,
+    'coupon_reveals': 0,
+    'messages_read': 0
+}
