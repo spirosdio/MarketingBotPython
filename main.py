@@ -5,17 +5,10 @@ from user_database import UserDatabase
 import threading
 
 
-def create_users():
+def create_users(db):
     db.create_user('spiros', 'diochnos', 1, '26')
     db.create_user('vaso', 'kollia', 2, '27')
     db.create_user('angelos', 'todri', 3, '28')
-    db.create_user('giorgos', 'kollas', 4, '29')
-    db.create_user('giannis', 'kollas', 5, '30')
-    db.create_user('nikos', 'kollas', 6, '31')
-    db.create_user('maria', 'kollia', 7, '32')
-    db.create_user('kostas', 'kollas', 8, '33')
-    db.create_user('kostas', 'kollas', 9, '34')
-    db.create_user('kostas', 'kollas', 10, '35')
 
 
 if __name__ == "__main__":
@@ -23,7 +16,7 @@ if __name__ == "__main__":
     threading.Thread(target=run_client_server).start()
 
     db = UserDatabase()
-    create_users()
+    create_users(db)
 
     # Creating data instances
     data_root = Data(create_welcoming_message)
